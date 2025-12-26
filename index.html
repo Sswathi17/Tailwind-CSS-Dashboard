@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind CSS Dashboard</title>
+  <link rel="icon" type="image/png" href="/favicon.svg" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center p-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-md">
+    <div class="text-xl font-bold">My Dashboard</div>
+    <nav class="hidden md:flex space-x-6">
+      <a href="#" class="hover:text-slate-200">Home</a>
+      <a href="#" class="hover:text-slate-200">Dashboard</a>
+      <a href="#" class="hover:text-slate-200">Profile</a>
+      <a href="#" class="hover:text-slate-200">Settings</a>
+    </nav>
+    <button id="themeToggle" class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition">🌙</button>
+  </header>
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="hidden md:flex flex-col w-64 bg-indigo-700 text-white p-4 space-y-4 ">
+      <a href="#" class="hover:bg-indigo-600 p-2 rounded">Dashboard</a>
+      <a href="#" class="hover:bg-indigo-600 p-2 rounded">Analytics</a>
+      <a href="#" class="hover:bg-indigo-600 p-2 rounded">Projects</a>
+      <a href="#" class="hover:bg-indigo-600 p-2 rounded">Settings</a>
+    </aside>
+
+    <!-- Main -->
+    <main class="p-6 w-full">
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+
+        <div class="p-5 rounded-xl shadow-lg bg-gradient-to-br from-indigo-500 to-indigo-400 text-white">
+          <div class="text-sm font-semibold">Users</div>
+          <div class="mt-2 text-2xl font-bold">1,245</div>
+        </div>
+
+        <div class="p-5 rounded-xl shadow-lg bg-gradient-to-br from-blue-500 to-blue-400 text-white">
+          <div class="text-sm font-semibold">Revenue</div>
+          <div class="mt-2 text-2xl font-bold">$12,430</div>
+        </div>
+
+        <div class="p-5 rounded-xl shadow-lg bg-gradient-to-br from-sky-500 to-sky-400 text-white">
+          <div class="text-sm font-semibold">Orders</div>
+          <div class="mt-2 text-2xl font-bold">354</div>
+        </div>
+
+        <div class="p-5 rounded-xl shadow-lg bg-gradient-to-br from-cyan-500 to-cyan-400 text-white">
+          <div class="text-sm font-semibold">Feedback</div>
+          <div class="mt-2 text-2xl font-bold">87</div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 max-w-5xl mx-auto">
+        <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-md">
+          <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-md">
+          <canvas id="orderChart"></canvas>
+        </div>
+      </div>
+
+     <!-- Table -->
+<div class="mt-10 overflow-x-auto">
+  <table class="min-w-full bg-white dark:bg-slate-800 rounded-xl shadow-md">
+    
+    <thead class="bg-indigo-600 text-white">
+      <tr>
+        <th class="p-4 text-left">Order ID</th>
+        <th class="p-4 text-left">Customer</th>
+        <th class="p-4 text-left">Status</th>
+        <th class="p-4 text-left">Amount</th>
+      </tr>
+    </thead>
+
+    <!-- LINE CODE IS HERE 👇 -->
+    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+
+      <tr class="hover:bg-slate-100 dark:hover:bg-slate-700">
+        <td class="p-4">#001</td>
+        <td class="p-4">Ranbir</td>
+        <td class="p-4">
+          <span class="px-3 py-1 text-xs font-semibold bg-green-100 text-green-700 rounded-full">
+            Completed
+          </span>
+        </td>
+        <td class="p-4">$120</td>
+      </tr>
+
+      <tr class="hover:bg-slate-100 dark:hover:bg-slate-700">
+        <td class="p-4">#002</td>
+        <td class="p-4">Zayn</td>
+        <td class="p-4">
+          <span class="px-3 py-1 text-xs font-semibold bg-yellow-100 text-yellow-700 rounded-full">
+            Pending
+          </span>
+        </td>
+        <td class="p-4">$90</td>
+      </tr>
+
+      <tr class="hover:bg-slate-100 dark:hover:bg-slate-700">
+        <td class="p-4">#003</td>
+        <td class="p-4">Ajay</td>
+        <td class="p-4">
+          <span class="px-3 py-1 text-xs font-semibold bg-red-100 text-red-700 rounded-full">
+            Processing
+          </span>
+        </td>
+        <td class="p-4">$75</td>
+      </tr>
+
+      <tr class="hover:bg-slate-100 dark:hover:bg-slate-700">
+        <td class="p-4">#004</td>
+        <td class="p-4">Vikram</td>
+        <td class="p-4">
+          <span class="px-3 py-1 text-xs font-semibold bg-yellow-100 text-yellow-700 rounded-full">
+            Incomplete
+          </span>
+        </td>
+        <td class="p-4">$30</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+  <!-- Footer --> 
+   <footer class="flex flex-col md:flex-row justify-between items-center p-4 bg-indigo-700 text-white mt-10">
+	 <div class="text-sm">@2025 Dashboard. All Rights Reserved.</div> 
+	 <div class="flex space-x-4 mt-2 md:mt-0"> 
+		<a href="#" class="hover:underline">Privacy</a> 
+		<a href="#" class="hover:underline">Terms</a>
+		 <a href="#" class="hover:underline">Contact</a> 
+		</div>
+	 </footer>
+
+<script>
+  const toggleBtn = document.getElementById("themeToggle");
+
+  // Check saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+    toggleBtn.textContent = "☀️";
+  } else {
+    document.documentElement.classList.remove("dark");
+    toggleBtn.textContent = "🌙";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+      toggleBtn.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      toggleBtn.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+  // Revenue chart
+  new Chart(document.getElementById("revenueChart"), {
+    type: "line",
+    data: {
+      labels: ["Jan","Feb","Mar","Apr","May","Jun"],
+      datasets: [{
+        label: "Revenue",
+        data: [5000, 7000, 8000, 6000, 9000, 12000],
+        borderColor: "#6366F1",
+        backgroundColor: "#6366F1",
+        borderWidth: 2,
+        fill: false
+      }]
+    }
+  });
+
+  // Orders chart
+  new Chart(document.getElementById("orderChart"), {
+    type: "bar",
+    data: {
+      labels: ["Mon","Tue","Wed","Thu","Fri","Sat"],
+      datasets: [{
+        label: "Orders",
+        data: [50, 70, 60, 90, 120, 100],
+        backgroundColor: "#3B82F6"
+      }]
+    }
+  });
+</script>
+
+</body>
+</html>
